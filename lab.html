@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101011"><title>Лаборатория кейсов · Bekarys</title><link rel="stylesheet" href="assets/font.css"><style>
+:root{color-scheme:light;--ink:#1d2428;--muted:#526068;--paper:#f6f7f5;--panel:#fff;--line:#dce1e1;--soft:#f0f2f2;--accent:#244be4;--pale:#eef2ff;--risk:#943c15;--warn:#fff1e7;--font:Inter,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.48 var(--font);font-variant-numeric:tabular-nums}
+a{color:var(--accent);text-underline-offset:.2em}a:hover{text-decoration:underline}
+button,input,select{font:inherit}button,a,summary,input,select{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.mast{min-height:64px;max-width:1550px;margin:auto;padding:0 clamp(16px,3vw,44px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mast .identity{display:flex;align-items:center;gap:15px}.mast .mark{font-size:26px;font-weight:760;letter-spacing:-.06em}.mast .identity span{font-size:14px;color:var(--muted);padding-left:15px;border-left:1px solid #c8cccc}.mast>a{color:var(--ink);font-size:14px;text-decoration:none;font-weight:600}.mast>a:hover{color:var(--accent)}
+main{max-width:1550px;display:grid;grid-template-columns:191px minmax(0,1fr);gap:0 clamp(20px,2.7vw,42px);margin:auto;padding:0 clamp(14px,3vw,44px) 20px;align-items:start}
+nav{position:sticky;top:14px;grid-column:1;grid-row:1/5;display:grid;gap:3px;align-content:start;padding-top:22px}
+nav .nav-heading{margin:0 0 9px 8px;color:var(--muted);font-size:13px;font-weight:650}
+nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;color:var(--ink);text-decoration:none;border-radius:5px;font-size:14px}
+nav a .code{font-size:12px;min-width:21px;color:var(--muted)}nav a:hover{background:#e9edec;text-decoration:none}
+nav [aria-current=page]{background:#e5e9eb;font-weight:650}nav [aria-current=page] .code{color:var(--accent)}
+article, .tools,footer{grid-column:2;min-width:0}
+article{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:clamp(18px,2.55vw,38px);outline:none}
+header{margin:0 0 25px}header .eyebrow{margin:0 0 6px;color:var(--muted);font-size:13px}
+h1,h3,p{margin:0}.intro{color:var(--muted);max-width:77ch;font-size:15px;margin:9px 0 0}h1{font-size:clamp(26px,2.4vw,32px);line-height:1.09;font-weight:670;letter-spacing:-.045em}
+.gcapp{max-width:100%;overflow-wrap:anywhere}
+.gcapp .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.panel{min-width:0;padding:19px 21px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.panel>*+*{margin-top:12px}.gcapp>*+*{margin-top:16px}
+h3{font-weight:650;font-size:18px;line-height:1.28;letter-spacing:-.022em}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+label{display:block;color:var(--ink);font-size:14px}.panel label+label{margin-top:10px}
+button,.mast>a{cursor:pointer}button,select,input:not([type=range]):not([type=checkbox]){border:1px solid #bdc5c9;border-radius:5px;padding:8px 10px;background:#fff;color:var(--ink);max-width:100%}
+button{font-size:14px;line-height:1.35;font-weight:580;min-height:36px}
+button:hover:not(:disabled){border-color:#7e8d99;background:var(--soft)}
+button.primary,button[data-csv]{background:var(--accent);color:#fff;border-color:var(--accent)}
+button.primary:hover:not(:disabled),button[data-csv]:hover:not(:disabled){background:#1c3bc3;border-color:#1c3bc3}
+button:disabled,.primary:disabled,button[data-csv]:disabled{background:#f0f2f2;color:#647079;border-color:var(--line);cursor:not-allowed}
+select{min-height:37px}input[type=number]{width:8rem}input[type=search]{width:100%}input:invalid{border-color:var(--risk)!important}
+input[type=checkbox],input[type=range]{accent-color:var(--accent)}input[type=range]{width:100%;display:block;margin:7px 0 0}
+summary{cursor:pointer;font-weight:580;color:var(--ink)}details>p{margin:9px 0 0}details>summary:hover{color:var(--accent)}
+.gcapp a{font-weight:550}
+.metric{font-size:clamp(25px,3vw,40px);font-weight:670;letter-spacing:-.04em;line-height:1.08}
+.tag{font-size:12px;color:var(--muted);font-weight:620}
+.tools{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:16px 0;color:var(--muted);font-size:14px}.tools a{text-decoration:none}
+footer{font-size:12px;color:var(--muted);padding-top:13px;border-top:1px solid var(--line)}
+.case-notes{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding-top:16px;margin:20px 0 0}
+.case-notes details{font-size:13px;color:var(--muted)}.case-notes summary{font-size:14px}
+.flowline{display:flex;list-style:none;margin:0 0 14px;padding:0;border-bottom:1px solid var(--line);gap:4px}
+.flowline li{flex:1;color:var(--muted);font-size:12px;line-height:1.24;padding:7px 2px 10px}
+.flowline li:before{content:"";display:block;width:100%;height:3px;background:#e4e8e8;margin:0 0 7px}
+.flowline .done:before{background:#98a8da}.flowline .now:before{background:var(--accent)}.flowline .now{color:var(--ink);font-weight:700}
+#gc-0 .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+#gc-0 .grid .panel:first-child{grid-row:span 2;background:var(--soft)}
+#gc-0 .grid .panel:nth-child(4){grid-column:1/-1;display:grid;grid-template-columns:minmax(110px,.6fr) minmax(130px,1fr) minmax(220px,2.7fr);align-items:center;gap:12px}
+#gc-0 .grid .panel:nth-child(4)>*{margin:0}
+#gc-0 input[type=checkbox]{width:16px;height:16px;vertical-align:middle;margin:0 6px 0 0}
+#gc-0 .grid section:first-child label[for],#gc-0 select{max-width:100%}
+#gc-0>.panel{border:0;border-top:1px solid var(--line);border-radius:0;padding:15px 0 0}
+#gc-0 .events{list-style:none;display:grid;gap:0;padding:0;margin:7px 0}
+#gc-0 .events li{border-bottom:1px solid var(--line);padding:5px 0;display:flex;gap:13px}
+#gc-0 .events time{color:var(--muted)}
+#gc-1 .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.14fr)}
+#gc-1 [data-volume],#gc-1 [data-demand]{height:21px}
+#gc-1 label{display:grid;grid-template-columns:1fr auto;align-items:baseline;margin:14px 0}
+#gc-1 label input{grid-column:1/-1}#gc-1 output{font-weight:700;font-size:21px;color:var(--accent)}
+#gc-1 .result-head{font-size:13px;font-weight:600;color:var(--muted)}
+#gc-1 [data-net]{margin-top:3px}
+#gc-1 [data-net].loss{color:var(--risk)}
+#gc-1 .statline{display:flex;gap:20px;flex-wrap:wrap;margin:14px 0}
+#gc-1 .statline div{flex:1;min-width:98px;border-top:1px solid var(--line);padding-top:10px}
+#gc-1 .statline strong{font-size:21px;display:block}.statline small{font-size:13px;color:var(--muted)}
+#gc-1 .pack{display:grid;grid-template-columns: minmax(145px,.7fr) 2fr;align-items:start;gap:18px;background:var(--soft);border:0}
+#gc-1 .pack>div{margin:0}.pack .metric{font-size:32px;margin:8px 0}.pack .label-copy{padding-left:20px;border-left:1px solid #c6cdd0}.pack p+p{margin-top:6px}
+#gc-2 .grid>.panel:first-child{background:var(--soft)}
+#gc-2 .workchart{list-style:none;display:grid;gap:8px;padding:0;margin:13px 0 0}
+.workchart li{display:grid;grid-template-columns: minmax(85px,120px) 1fr minmax(92px,110px);align-items:center;gap:12px;font-size:13px}
+.workchart .timecell{color:var(--muted);text-align:right}.workchart .track{height:14px;position:relative;background:#edf0f0;border-radius:2px}
+.workchart .bar{height:100%;position:absolute;background:#a5afb5;border-radius:2px}.workchart .mine{background:var(--accent)}
+#gc-2 form{display:flex;gap:10px;flex-wrap:wrap;align-items:end}#gc-2 form input{margin-left:5px}
+#gc-4 .grid{grid-template-columns:minmax(0,1.45fr) minmax(230px,.8fr)}
+#gc-4 form{display:flex;gap:8px;align-items:flex-end}#gc-4 input{margin-top:5px}#gc-4 form label{flex:1}
+#gc-4 [data-answer]{padding:15px 0 0;border:0;border-radius:0;border-top:1px solid var(--line)}
+#gc-4 [data-answer] h3{font-size:20px}
+#gc-4 [data-answer] h3.notice{color:var(--risk)}
+#gc-4 [data-cat] details{padding:10px 0;border-top:1px solid var(--line)}
+#gc-4 .suggestions{margin:12px 0 0}#gc-4 [data-ex]{margin-top:8px}
+#gc-4 [data-ex] button{font-size:13px;text-align:left;font-weight:500}
+#gc-5{display:flex;flex-direction:column;gap:15px}#gc-5>*+*{margin:0}
+#gc-5>.panel:first-child{border:0;padding:0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+#gc-5>.panel:first-child label{margin:0}
+#gc-5 .grid{grid-template-columns:repeat(3,minmax(0,1fr));order:3;align-items:start}
+#gc-5 .grid .panel{padding:16px}#gc-5 .grid label{display:grid;grid-template-columns:1fr;gap:3px}
+#gc-5 .grid label input{width:100%}
+#gc-5 [data-spot] .metric{font-size:clamp(22px,2vw,31px);line-height:1.2}#gc-5 [data-spot] .bad{color:var(--risk)}
+#gc-5 .grid h3{font-size:17px}#gc-5 .grid p{font-size:14px}
+#gc-5 .comparison{order:2}
+#gc-5 table{border-collapse:collapse;width:100%;font-size:14px}#gc-5 th,#gc-5 td{text-align:right;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+#gc-5 th:first-child{text-align:left}#gc-5 thead th{font-weight:550;font-size:12px;color:var(--muted)}#gc-5 td span{display:block;font-size:12px;color:var(--muted)}#gc-5 td.risk{color:var(--risk)}#gc-5 td strong{white-space:nowrap}
+@media(min-width:1410px){article{padding:32px 42px}.mast{min-height:70px}}
+@media(max-width:1050px){main{grid-template-columns:150px minmax(0,1fr);gap:0 16px}.panel{padding:16px}#gc-5 .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.mast{min-height:57px}main{display:block}nav{position:static;display:flex;gap:4px;flex-wrap:wrap;padding:0 0 13px}.nav-heading{display:none}nav a{font-size:13px;gap:4px;padding:6px 8px}.mast .identity span{font-size:13px}.gcapp .grid,#gc-2 .grid{gap:10px}}
+@media(max-width:620px){body{font-size:14px}.mast{gap:10px;align-items:center}.mast .mark{font-size:23px}.mast .identity{gap:9px}.mast .identity span{padding-left:9px;font-size:12px}.mast>a{font-size:12px}.tools{flex-wrap:wrap}.mast,main{padding-left:16px;padding-right:16px}
+article{padding:17px 13px;border-radius:8px}header{margin-bottom:16px}header .eyebrow{font-size:12px}.intro{font-size:14px}h1{font-size:24px}
+nav{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-bottom:9px}nav a{padding:6px 7px;white-space:nowrap}nav a .code{min-width:17px}
+.gcapp .grid,#gc-0 .grid,#gc-1 .grid,#gc-4 .grid,#gc-5 .grid{grid-template-columns:1fr}.panel{padding:14px}
+#gc-0 .grid .panel:first-child{grid-row:auto}#gc-0 .grid .panel:nth-child(4){display:block}#gc-0 .grid .panel:nth-child(4)>*+*{margin-top:9px}
+.flowline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 6px}.flowline li{font-size:12px;overflow-wrap:normal;padding:3px 0 6px}.flowline li:before{margin-bottom:3px}
+#gc-1 .pack{grid-template-columns:1fr}.pack .label-copy{border:0;border-top:1px solid #c6cdd0;padding:12px 0 0}
+#gc-5>.panel:first-child{display:block}#gc-5>.panel:first-child label{margin-top:7px}
+#gc-5 th,#gc-5 td{padding:7px 3px;font-size:12px}#gc-5 table{table-layout:fixed}#gc-5 thead th{font-size:10px}#gc-5 td strong{white-space:normal}#gc-5 td span{font-size:11px}
+#gc-4 form{display:block}#gc-4 form button{margin-top:7px}
+.workchart li{grid-template-columns:64px 1fr 76px;gap:7px;font-size:12px}
+.case-notes{display:block}.case-notes details+details{margin-top:10px}}
+@media print{
+@page{size:A4 portrait;margin:10mm}
+body,main{background:white;color:black;margin:0;padding:0;width:100%;max-width:none;display:block}
+.mast{display:block;padding:0 0 3mm;min-height:0;border-bottom:1px solid #999}.mast .mark{font-size:14pt}
+.mast a,nav,.tools,footer,button,[data-ex],.suggestions,.flowline{display:none!important}
+article{border:0;border-radius:0;padding:3mm 0}article[hidden]{display:none!important}header{margin:2mm 0 3mm}h1{font-size:20pt}
+.gcapp,.intro,article p,article label,summary,.case-notes{font-size:9pt!important}
+.panel{padding:7px 10px;break-inside:avoid}.panel>*+*,.gcapp>*+*{margin-top:5px}
+.gcapp .grid,#gc-0 .grid,#gc-1 .grid,#gc-2 .grid,#gc-4 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3mm}
+#gc-1 .pack{display:grid;grid-template-columns:1fr 2fr}.gcapp .metric{font-size:18pt!important}
+#gc-5 .grid{grid-template-columns:repeat(3,minmax(0,1fr))}.case-notes{display:block;border-top:1px solid #ccc;padding:4px 0;margin:6px 0}.case-notes details:first-child{display:none}
+#gc-5 .comparison td,#gc-5 .comparison th{padding:4px}
+}
+.small-label{display:none}@media(max-width:620px){#gc-5 .wide-label{display:none}#gc-5 .small-label{display:inline}#gc-5 p.flow-key{display:block;font-size:12px;color:var(--muted)}#gc-5 thead th{font-size:12px}}@media print{.small-label{display:none!important}}
+
+@media screen{
+  :root{
+    color-scheme:dark;
+    --ink:#f7f6f2;--muted:#bab6b1;--paper:#101011;--panel:#181819;--soft:#222223;
+    --line:#3b3938;--accent:#ff9a45;--pale:#37271c;--risk:#ffab8a;--warn:#352421
+  }
+  .mast .mark{font-weight:800;font-style:italic;letter-spacing:-.062em;color:var(--ink)}
+  .mast .identity span,.pack .label-copy{border-color:var(--line)}
+  h1{font-weight:800;letter-spacing:-.045em}h3{font-weight:670}
+  nav a:hover{background:#222223}nav [aria-current=page]{background:#282625;color:#fff}
+  nav [aria-current=page] .code{color:var(--accent)}
+  .panel{background:var(--panel)}
+  select,button,input:not([type=range]):not([type=checkbox]){background:#232324;color:var(--ink);border-color:#77736f}
+  input::placeholder{color:#b9b4ad}
+  button:hover:not(:disabled){background:#302f2e;border-color:#a39a91}
+  button.primary,button[data-csv]{background:var(--accent);border-color:var(--accent);color:#20150f;font-weight:660}
+  button.primary:hover:not(:disabled),button[data-csv]:hover:not(:disabled){background:#ffae69;border-color:#ffae69;color:#20150f}
+  button:disabled,button.primary:disabled,button[data-csv]:disabled{background:#242425;color:#a8a29b;border-color:#41403f}
+  .flowline li:before{background:#3c3a38}.flowline .done:before{background:#a26b46}.flowline .now:before{background:var(--accent)}
+  .workchart .track{background:#363435}.workchart .bar{background:#90908c}.workchart .mine{background:var(--accent)}
+  .gcapp input:invalid{border-color:var(--risk)}
+  #gc-0 .panel[aria-live],#gc-0 .panel:first-child p[aria-live]{color:#f2c69c}
+  #gc-1 .pack{background:#23201f;border-left:3px solid var(--accent)}
+  #gc-1 .result-head{color:#c6c0bb}
+  #gc-5 td.risk span{color:var(--risk)}
+  article:focus-visible{outline:0}
+  ::selection{background:#ff9a45;color:#20150f}
+}
+@media print{
+  :root{color-scheme:light;--ink:#161819;--muted:#414545;--paper:#fff;--panel:#fff;--soft:#f3f3f1;--accent:#262927;--risk:#87391d;--line:#b6b7b5}
+  article,.panel{background:white!important}.mast,article,input,select{color:#161819}
+}
+@media screen and (max-width:620px){.mast{gap:5px}.mast .identity{gap:6px}.mast .identity span{font-size:11px;padding-left:6px}.mast>a{white-space:nowrap}}@media screen and (max-width:375px){.mast .identity span{width:76px;font-size:11px}.mast>a{font-size:11px}}
+</style></head><body><div class="mast"><div class="identity"><strong class="mark">Смена</strong><span>Лаборатория Bekarys</span></div><a data-home href="./">← К прогнозу закупок</a></div><main><nav aria-label="Кейсы лаборатории"><p class="nav-heading">Кейсы хакатона</p><a href="#1" data-case="1"><span class="code">01</span>Доставка</a><a href="#2" data-case="2"><span class="code">02</span>Жмых</a><a href="#3" data-case="3"><span class="code">03</span>Очередь</a><a href="./" data-home><span class="code">04</span>Закупки ↗</a><a href="#5" data-case="5"><span class="code">05</span>Бариста</a><a href="#6" data-case="6"><span class="code">06</span>Локации</a></nav>
+<article id="case-1" data-example="1" tabindex="-1"><header><p class="eyebrow">Кейс 01 · Global Coffee × Coyote</p><h1>Собственная доставка</h1><p class="intro">Один тестовый заказ связывает гостя, кофейню, управляющего и курьера. Оформите заказ, чтобы увидеть его в кофейне.</p></header><div class="gcapp" id="gc-0" lang="ru"></div><div class="case-notes"><details><summary>Как пройти сценарий</summary><p>Оформите корзину, примите заказ, назначьте курьера, отметьте готовность и проведите вручение. Затем проверьте отказ курьера и повторное назначение.</p></details><details><summary>Что проверить на точке</summary><p>Сопоставить журнал статусов с фактическим временем выдачи. Измерить долю вручений в обещанное окно и время ожидания готового пакета. Согласовать с Coyote события, зоны, права отмены и повторную доставку событий.</p></details></div></article>
+<article id="case-2" data-example="2" tabindex="-1" hidden><header><p class="eyebrow">Кейс 02 · Global Coffee × Coyote</p><h1>Компост из кофейного жмыха</h1><p class="intro">Смоделируйте объём партии и продажи через садовый магазин. Массы, выход и цены учебные.</p></header><div class="gcapp" id="gc-1" lang="ru"></div><div class="case-notes"><details><summary>Как пройти сценарий</summary><p>Сравните продажи 90 и 60 пакетов. Затем измените объём жмыха с одной точки и проверьте число полных упаковок.</p></details><details><summary>Что проверить на точке</summary><p>Пять дней замерять влажную массу и отбраковку на трёх точках. Подтвердить стоимость маршрута, срок хранения и условия выпуска с партнёром, спрос и цену — у покупателей. Пробную партию выпускать после подтверждения зрелости.</p></details></div></article>
+<article id="case-3" data-example="3" tabindex="-1" hidden><header><p class="eyebrow">Кейс 03 · Global Coffee × Coyote</p><h1>Время готовности напитка</h1><p class="intro">Рассчитайте время приготовления до оплаты и сравните обещание гостю с фактической выдачей.</p></header><div class="gcapp" id="gc-2" lang="ru"></div><div class="case-notes"><details><summary>Как пройти сценарий</summary><p>Сравните одну и две станции на один и тот же момент. Оформите напиток и введите фактическое время выдачи. Сравните его с обещанием, сохранённым при заказе.</p></details><details><summary>Что проверить на точке</summary><p>Записывать время оплаты, начала приготовления и выдачи. Сравнить медианную ошибку и 90-й процентиль ошибки с медианой ожидания для того же часа. Проверить доступность оборудования второй станции в пик.</p></details></div></article>
+<article id="case-5" data-example="5" tabindex="-1" hidden><header><p class="eyebrow">Кейс 05 · Global Coffee × Coyote</p><h1>Помощник бариста</h1><p class="intro">Найдите рабочую инструкцию и откройте её источник. Каталог содержит четыре учебные карточки.</p></header><div class="gcapp" id="gc-4" lang="ru"></div><div class="case-notes"><details><summary>Как пройти сценарий</summary><p>Задайте вопрос о закрытии смены и откройте источник. Попробуйте вопрос о рафе и запрос с кодом ошибки E17.</p></details><details><summary>Что проверить на точке</summary><p>Старший смены размечает 20–30 реальных вопросов и проверяет допустимые ответы, версии источников и корректную передачу неизвестного вопроса. Отдельно измерять время поиска и ошибочные ответы. Согласовать базу с Академией бариста и Coyote Intelligence.</p></details></div></article>
+<article id="case-6" data-example="6" tabindex="-1" hidden><header><p class="eyebrow">Кейс 06 · Global Coffee × Coyote</p><h1>Экономика новой локации</h1><p class="intro">Сравните три учебных адреса по выручке, операционному остатку и сроку окупаемости.</p></header><div class="gcapp" id="gc-5" lang="ru"></div><div class="case-notes"><details><summary>Как пройти сценарий</summary><p>Сравните базовый и осторожный сценарии, затем измените поток, чек или аренду одного адреса. В таблице видны все девять сочетаний.</p></details><details><summary>Что проверить на точке</summary><p>Считать поток у конкретного входа в будни и выходные. Проверить доступ, соседей, аренду, мощность и воду. Подтвердить конверсию, фонд оплаты труда и инвестиции. Отдельно учесть разгон продаж, налоги и финансирование.</p></details></div></article><div class="tools"><a data-home href="./">Открыть основной проект · прогноз закупок</a><button type="button" class="print-case" id="print-case">Распечатать кейс</button></div><footer>Global Coffee × Coyote · Учебные примеры команды Bekarys. Данные и действия демонстрационные. При обновлении страницы настройки сбрасываются. Описание платформы — <a href="https://coyote-pos.kz/">Coyote POS</a>. Сведения о сети — <a href="https://globalcoffee.info/">Global Coffee</a>.</footer></main>
+<script>
+function saveCSV(n,rows){
+ const fmt=v=>typeof v==='number'?String(Number(v.toFixed(4))).replace('.',','):String(v??'');
+ const data='\uFEFF'+rows.map(r=>r.map(v=>'"'+fmt(v).replaceAll('"','""')+'"').join(';')).join('\r\n');
+ const a=document.createElement('a'),u=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8'}));a.href=u;a.download='global-coffee-'+n+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)
+}
+function delivery(root){
+ let state; const initial=()=>({basket:[1,1],zone:0,placed:false,accepted:false,ready:false,courier:0,assigned:0,picked:false,handed:false,minute:-1,events:[]});
+ state=initial();
+ const products=[['Латте',1350],['Круассан',950]], stamps={place:0,accept:1,assign:3,ready:6,decline:4,pick:8,finish:19};
+ const clock=n=>[Math.floor((720+n)/60)%24,(720+n)%60].map(x=>String(x).padStart(2,'0')).join(':');
+ const money=n=>n.toLocaleString('ru-RU')+' ₸';
+ function paint(){
+  const s=state, sum=products.reduce((n,p,i)=>n+p[1]*s.basket[i],0);
+  const allowed={place:!s.placed&&!s.zone&&sum>0,accept:s.placed&&!s.accepted,assign:s.accepted&&!s.courier&&!s.picked,ready:s.accepted&&!s.ready,pick:s.ready&&s.courier&&!s.picked,decline:s.courier&&!s.picked,finish:s.picked&&!s.handed,reset:true};
+  const labels={place:'Оформить заказ',accept:'Принять в работу',assign:'Назначить курьера',ready:'Заказ готов',pick:'Забрал заказ',decline:'Отказаться от назначения',finish:'Вручил гостю',reset:'Начать заново'};
+  const b=(key,secondary=false)=>`<button type="button" data-a="${key}" class="${secondary?'':'primary'}" ${allowed[key]?'':'disabled'}>${labels[key]}</button>`;
+  const status=s.handed?'Вручён':s.picked?'В пути':s.ready?'Готов к выдаче':s.accepted?'Готовится':s.placed?'Передан в кофейню':'Корзина';
+  const steps=['Корзина','Оформлен','Принят','Готов','В пути','Вручён'];
+  const step=s.handed?5:s.picked?4:s.ready?3:s.accepted?2:s.placed?1:0;
+  const progress=steps.map((name,i)=>`<li class="${i===step?'now':i<step?'done':''}" ${i===step?'aria-current="step"':''}>${name}</li>`).join('');
+  root.innerHTML=`<ol class="flowline" aria-label="Этап заказа">${progress}</ol><div class="grid"><section class="panel"><h3>Корзина гостя</h3>${products.map(([name,price],i)=>`<label><input data-item="${i}" type="checkbox" ${s.basket[i]?'checked':''} ${s.placed?'disabled':''}> ${name} · ${money(price)}</label>`).join('')}<label>Адрес <select data-zone ${s.placed?'disabled':''}><option value="0">Площадь, 7 · в зоне</option><option value="1" ${s.zone?'selected':''}>Дальний квартал · вне зоны</option></select></label><p>${s.zone?'Адрес вне зоны доставки.':!sum?'Выберите позицию.':'Доставка 450 ₸ · ожидаем в 12:15–12:25'}</p><p class="metric">${s.zone?'Заказ недоступен':money(sum?sum+450:0)}</p>${s.placed?'<p aria-live="polite">Заказ GC-1042 · '+status+'</p>':''}${b('place')}</section><section class="panel"><h3>Кофейня</h3><p>${s.placed?'GC-1042 · '+products.filter((p,i)=>s.basket[i]).map(p=>p[0]).join(', '):'Заказ появится после оформления.'}</p><div class="row">${b('accept')}${b('ready')}</div></section><section class="panel"><h3>Управляющий</h3><p aria-live="polite">${status} · ${s.courier?'Курьер №'+s.courier:'Курьер пока не назначен'}</p>${b('assign')}</section><section class="panel"><h3>Курьер</h3><p>${s.courier?'GC-1042 · Площадь, 7':'Ожидаем назначения.'}</p><div class="row">${b('pick')}${b('finish')}${b('decline',true)}</div></section></div><section class="panel"><h3>Журнал заказа</h3>${s.events.length?'<ol class="events">'+s.events.map(e=>`<li><time>${clock(e[0])}</time>${e[1]}</li>`).join('')+'</ol>':'<p>События появятся после оформления.</p>'}${b('reset',true)}</section>`;
+  root.querySelectorAll('[data-item]').forEach(el=>el.onchange=()=>{if(!s.placed)s.basket[Number(el.dataset.item)]=+el.checked;paint()});
+  root.querySelector('[data-zone]').onchange=e=>{if(!s.placed)s.zone=+e.target.value;paint()};
+  root.querySelectorAll('[data-a]').forEach(el=>el.onclick=()=>{
+   const key=el.dataset.a;if(!allowed[key])return;
+   if(key==='reset'){state=initial();paint();return}
+   let msg=''; if(key==='place'){s.placed=true;msg='Гость оформил заказ'} if(key==='accept'){s.accepted=true;msg='Кофейня приняла заказ'} if(key==='ready'){s.ready=true;msg='Заказ готов'} if(key==='assign'){s.courier=++s.assigned;msg='Назначен курьер №'+s.courier} if(key==='decline'){s.courier=0;msg='Курьер отказался, нужно новое назначение'} if(key==='pick'){s.picked=true;msg='Курьер забрал пакет'} if(key==='finish'){s.handed=true;msg='Заказ вручён'}
+   s.minute=Math.max(s.minute+1,stamps[key]);s.events.push([s.minute,msg]);paint();
+  });
+ }
+ paint()
+}
+function grounds(root) {
+ let exportRows=[];
+ const f=n=>n.toLocaleString('ru-RU',{maximumFractionDigits:2});
+ root.innerHTML=`<div class="grid"><section class="panel"><h3>Параметры партии G-01</h3><label>С одной точки в день, кг <output data-q></output><input type="range" data-volume min="1" max="5" step=".5" value="2"></label><label>Спрос, пакетов <output data-n></output><input type="range" data-demand min="0" max="225" value="90"></label><details><summary>Сбор и обработка</summary><p>Три точки отдельно взвешивают и маркируют жмых пять дней. Водитель ежедневно отвозит его партнёру. Партнёр фиксирует приёмку, смешивает сырьё, компостирует, выдерживает и проверяет зрелость.</p></details><details><summary>Допущения и расходы</summary><p>Приёмка 90%. Жмых составляет 30% влажной смеси, выход продукта — 50%. Сбор и тара стоят 3 000 ₸, маршрут — 4 000 ₸, обработка и сырьё — 12 000 ₸ на 90 кг смеси. Упаковка стоит 40 ₸ за пакет. Продажная цена — 350 ₸.</p></details></section><section class="panel" aria-live="polite"><p class="result-head">Результат после прямых расходов</p><p class="metric" data-net></p><div class="statline"><div><strong data-sold></strong><small>Продано пакетов</small></div><div><strong data-threshold></strong><small>Порог окупаемости, пак.</small></div></div><p data-cash></p><details><summary>Баланс сырья и результат</summary><p data-balance></p><p data-thresh></p></details><button data-csv>Скачать расчёт CSV</button></section></div><section class="panel pack"><div><div class="tag">Опытная партия G-01</div><h3>Компост с кофейным жмыхом</h3><p class="metric">500 г</p></div><div class="label-copy"><p><strong>Макет этикетки</strong> · точки A, B и C</p><p>Даты сбора и приёмки берутся из журнала. Производитель и дата допуска — после проверки зрелости партнёром.</p></div></section>`;
+ const d=t=>root.querySelector('[data-'+t+']');
+ function calc(){const collected=+d('volume').value*15, good=.9*collected,mix=good/.3,final=mix*.5,packs=Math.floor((final+.000001)/.5),sold=Math.min(packs,+d('demand').value),cost=7000+Math.round(12000*mix/90)+packs*40,rev=sold*350;
+ exportRows=[['Партия G-01','Значение'],['Собрано, кг',collected],['Принято, кг',good],['Добавлено другого сырья, кг',mix-good],['Готовый компост, кг',final],['Упаковано, шт.',packs],['Продано, шт.',sold],['Цена, ₸',350],['Расходы, ₸',cost],['Выручка, ₸',rev],['Результат после прямых расходов, ₸',rev-cost],['Порог, пакетов',Math.ceil(cost/350)]];d('q').textContent=f(+d('volume').value);d('n').textContent=d('demand').value;d('balance').textContent=`Собрано ${f(collected)} кг, выбраковано ${f(collected-good)} кг, принято ${f(good)} кг. Добавлено ${f(mix-good)} кг растительного сырья. Выход ${f(final)} кг, полных пакетов ${packs}.`;
+ d('cash').textContent=`Расходы на всю партию ${f(cost)} ₸. Продано ${sold} из ${packs} пакетов по 350 ₸, выручка ${f(rev)} ₸. Непродано ${packs-sold}.`; d('net').textContent=f(rev-cost)+' ₸'; d('net').classList.toggle('loss',rev<cost);d('sold').textContent=sold+' / '+packs;d('threshold').textContent=Math.ceil(cost/350); d('thresh').textContent=`Для покрытия прямых расходов нужно продать ${Math.ceil(cost/350)} пакетов.`}
+ const paper=root.querySelector('.pack');const study=document.createElement('p');const source=document.createElement('a');source.href='https://agris.fao.org/search/en/providers/122535/records/65dff65d0f3e94b9e5de06a1';source.textContent='Исследование Hardgrove и Livesley, 2016';study.append('При прямом внесении свежего жмыха в почву исследователи наблюдали замедление роста пяти культур. Для этой партии предусмотрено компостирование. ',source);paper.querySelector('.label-copy').append(study);
+ d('csv').onclick=()=>saveCSV('grounds',exportRows);root.querySelectorAll('input').forEach(e=>e.oninput=calc);calc();
+}
+function queue(root){
+ let stations=1, promised=null, actual=null;
+ const at=t=>`${String(Math.floor((540+t)/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;
+ function paint(){
+  const free=stations===2?[2,0]:[2], rows=stations?[['A',1,0,2]]:[];
+  if(stations)for(const [id,min] of [['B',4],['C',2],['D',3]]){const i=free.indexOf(Math.min(...free)),from=free[i];free[i]+=min;rows.push([id,i+1,from,free[i]])}
+  const eta=rows.at(-1)?.[3], canFinish=promised!==null&&actual===null&&stations>0;
+  root.innerHTML=`<div class="grid"><section class="panel"><h3>Латте D · время готовности</h3><p>09:00. Напитку A осталось 2 мин, B займёт 4 мин, C — 2 мин, ваш заказ — 3 мин.</p><p class="metric" aria-live="polite">${actual!==null?at(actual):eta?at(eta):'Уточняется'}</p><p>${actual!==null?'Выдан гостю. При заказе обещано '+at(promised)+'.':promised===null?'Ожидаемая готовность до заказа.':'В момент оформления обещано '+at(promised)+'.'}</p><button class="primary" data-buy ${eta&&promised===null?'':'disabled'}>Заказать латте</button></section><section class="panel"><h3>Управляющий</h3><label>Полностью оснащённые станции <select data-st ${actual===null?'':'disabled'}>${['0 · пауза','1 · одна станция','2 · независимые станции'].map((x,i)=>`<option value="${i}" ${i===stations?'selected':''}>${x}</option>`).join('')}</select></label><p>Все варианты сравниваются на 09:00. У каждой станции есть бариста и оборудование. Если станций две, очередной напиток занимает первое освободившееся место.</p></section></div><section class="panel"><h3>Порядок приготовления</h3>${rows.length?'<ol class="workchart">'+rows.map(([id,i,a,b])=>`<li><span>${id} · место ${i}</span><span aria-hidden="true" class="track"><span class="bar ${id==='D'?'mine':''}" style="left:${100*a/eta}%;width:${100*(b-a)/eta}%"></span></span><span class="timecell">${at(a)}–${at(b)}</span></li>`).join('')+'</ol>':'<p>Очередь сохранена, выдача приостановлена.</p>'}</section><section class="panel"><h3>Фактическая выдача</h3><form><label>Минуты после 09:00 <input name="time" type="number" value="${actual??eta??''}" min="1" max="120" required ${canFinish?'':'disabled'}></label><button class="primary" ${canFinish?'':'disabled'}>Подтвердить выдачу</button></form>${actual===null?'':`<p>Обещано ${at(promised)}, выдано ${at(actual)}. Абсолютная ошибка ${Math.abs(actual-promised)} мин.</p>`}<button data-reset>Начать заново</button></section>`;
+  root.querySelector('[data-st]').onchange=e=>{stations=Number(e.target.value);paint()};
+  root.querySelector('[data-buy]').onclick=()=>{if(eta&&promised===null)promised=eta;paint()};
+  root.querySelector('form').onsubmit=e=>{e.preventDefault();const n=Number(e.currentTarget.elements.time.value);if(canFinish&&Number.isInteger(n)&&n>=1&&n<=120){actual=n;paint()}};
+  root.querySelector('[data-reset]').onclick=()=>{stations=1;promised=actual=null;paint()};
+ }
+ paint()
+}
+function assistantDemo(root){
+ const cards=[
+ {id:'R-01',name:'Американо',hint:'Как приготовить американо?',match:/американо/,body:'Учебная порция. Приготовьте 36 г эспрессо, добавьте 120 мл горячей питьевой воды. Сверьте модификаторы с заказом. Для другого размера нужна отдельная рецептура.'},
+ {id:'S-01',name:'Закрытие смены',hint:'Как закрыть смену?',match:/закры[а-я]*.{0,18}смен|конец смен|заверш[а-я]*.{0,18}смен/,body:'Сверьте открытые заказы. Зафиксируйте остатки и списания. Передайте расхождения старшему смены. Закройте смену после его подтверждения.'},
+ {id:'G-01',name:'Обращение гостя',hint:'Гость недоволен заказом. Что делать?',match:/недовол|жалоб|претензи|не тот напиток|перепутал[аи]? заказ/,body:'Выслушайте гостя. Сверьте позицию и пожелания с заказом. Согласуйте решение со старшим смены и запишите номер заказа и результат. Для возврата проверьте правила точки.'},
+ {id:'E-01',name:'Ошибка оборудования',hint:'На кофемашине код E17. Можно перезапустить?',match:/ошибк[а-я]*.{0,12}(аппарат|машин|оборудован)|кофемашин|кофевар|оборудован|[eе]\s*\d/,body:'Прекратите использование аппарата. Отметьте его как недоступный и передайте старшему модель и точный код с дисплея. Дождитесь сервисной инструкции для модели. В карточке нет расшифровки кодов или процедуры перезапуска.'}];
+ root.innerHTML=`<div class="grid"><section class="panel"><h3>Вопрос бариста</h3><form><label>Что нужно узнать? <input type="search" name="q" placeholder="Как закрыть смену?" required></label><button class="primary">Найти инструкцию</button></form><div class="panel" data-answer aria-live="polite"></div><details class="suggestions"><summary>Примеры вопросов</summary><div class="row" data-ex></div></details></section><section class="panel"><h3>Учебная база · версия 1</h3><p>Четыре примера для хакатона. Рабочие стандарты и рецептуры утверждает сеть.</p><div data-cat></div></section></div>`;
+ const field=root.querySelector('input'),ans=root.querySelector('[data-answer]'),cat=root.querySelector('[data-cat]'),examples=root.querySelector('[data-ex]');
+ const make=(tag,t)=>{const el=document.createElement(tag);el.textContent=t;return el};
+ function source(c){let a=make('a','Открыть '+c.id+' · '+c.name+' · v1');a.href='#source-'+c.id;a.onclick=e=>{e.preventDefault();const dt=root.querySelector('#source-'+c.id);dt.open=true;dt.querySelector('summary').focus();dt.scrollIntoView({block:'nearest'})};return a}
+ function find(q){let t=q.toLowerCase().replaceAll('ё','е').trim();let hits=cards.filter(c=>c.match.test(t));ans.replaceChildren();
+ const hasRecipeIntent=t==='американо'||/приготов|рецепт|состав|пропорц|ингредиент|сдела|варить|сколько.{0,25}(вод|эспрессо)/.test(t);
+ const hasEquipmentIssue=/[eе]\s*\d|ошибк|застрял|горяч|сломал|поломк|не (работа|включа)|выш[её]л[ао]? из строя/.test(t);
+ hits=hits.filter(c=>(c.id!=='R-01'||hasRecipeIntent)&&(c.id!=='E-01'||hasEquipmentIssue));
+ if(!hits.length||/раф|капучино|латте|флэт|матч[аи]|фраппе|аллерг|беремен|лекарств|противопоказ|безопасно ли пить/.test(t)){ans.append(make('h3','В базе нет инструкции для этого вопроса'),make('p','Проверьте каталог или обратитесь к старшему смены.'));ans.querySelector('h3').className='notice';return}
+ if(hits.length>1){ans.append(make('p','Нашлось несколько тем. Выберите нужную карточку.'));hits.forEach(c=>{let p=make('p','');p.append(source(c));ans.append(p)});return}
+ const c=hits[0];ans.append(make('h3',c.name),make('p',c.body),source(c))}
+ for(const c of cards){let dt=make('details','');dt.id='source-'+c.id;let summary=make('summary',c.id+' · '+c.name);dt.append(summary,make('p',c.body));cat.append(dt)}
+ for(const q of [...cards.map(c=>c.hint),'Как приготовить раф?']){let b=make('button',q);b.type='button';b.onclick=()=>{field.value=q;find(q)};examples.append(b)}
+ root.querySelector('form').onsubmit=e=>{e.preventDefault();find(field.value)};field.value=cards[1].hint;find(field.value)
+}
+function locations(root){
+ const sites=[
+ {name:'A · Кампус',info:'Учебный адрес A · 55 м². Витрина на пути от остановки к университету, два конкурента в пяти минутах ходьбы. Проверить каникулы, соседние точки сети и мощность подключения.',flow:1200,conv:5,check:2100,variable:35,rent:620000,fixed:1190000,cap:6500000},
+ {name:'B · Деловой квартал',info:'Учебный адрес B · 62 м². Первый этаж рядом с офисами, крупный конкурент у станции. Вход в бизнес-центр по пропускам. Проверить доступ с улицы, парковку и поток выходного дня.',flow:900,conv:7,check:2450,variable:37,rent:900000,fixed:1350000,cap:7900000},
+ {name:'C · Жилой квартал',info:'Учебный адрес C · 48 м². Вход виден с улицы, рядом жилые дома и парковка. Проверить утренний поток, вентиляцию и расстояние до других кофеен Global Coffee.',flow:750,conv:8,check:1900,variable:34,rent:450000,fixed:1200000,cap:5900000}];
+ const fields=[['flow','Пешеходы за день'],['conv','Конверсия, %'],['check','Средний чек, ₸'],['variable','Переменные, % выручки'],['rent','Аренда, ₸/мес'],['fixed','Прочие постоянные, ₸/мес'],['cap','Стартовые вложения, ₸']];
+ const scenarios=[['Осторожный',.75],['Базовый',1],['Оптимистичный',1.25]];let active=1;const exportsBySite=[];const fmt=(x,p=0)=>x.toLocaleString('ru-RU',{minimumFractionDigits:p,maximumFractionDigits:p});
+ root.innerHTML=`<div class="panel"><h3>Три помещения · 30 торговых дней</h3><label>Сценарий для карточек <select data-sc>${scenarios.map(([s,m],i)=>`<option value="${i}" ${i===1?'selected':''}>${s} · ${m*100}% потока</option>`).join('')}</select></label></div><div class="grid">${sites.map((s,i)=>`<section class="panel"><h3>${s.name}</h3><p>${s.info}</p><div aria-live="polite" data-spot="${i}"></div><details><summary>Исходные данные</summary>${fields.map(([k,title])=>`<label>${title} <input data-i="${i}" data-key="${k}" required type="number" min="0" ${k==='conv'||k==='variable'?'max="100"':''} step="any" value="${s[k]}"></label>`).join('')}</details></section>`).join('')}</div><section class="panel comparison"><h3>Остаток за месяц и срок окупаемости</h3><p class="small-label flow-key">Сценарии по доле базового потока.</p><div style="overflow-x:auto"><table><thead><tr><th>Адрес</th>${scenarios.map(([name,m])=>`<th scope="col" aria-label="${name}, ${Math.round(m*100)} процентов потока"><span class="wide-label">${name}</span><span class="small-label">${Math.round(m*100)}%</span></th>`).join('')}</tr></thead><tbody>${sites.map((s,i)=>`<tr><th>${s.name}</th>${scenarios.map((z,j)=>`<td data-cell="${i}-${j}"></td>`).join('')}</tr>`).join('')}</tbody></table></div><button data-csv>Скачать сравнение CSV</button><details><summary>Формулы</summary><p>Заказы за день = поток × множитель сценария × конверсия. Выручка за месяц = заказы × чек × 30. Операционный остаток = выручка × (1 − доля переменных расходов) − аренда − прочие постоянные расходы. Простая окупаемость = вложения / положительный месячный остаток. Налоги, проценты и разгон продаж сюда не включены.</p></details></section>`;
+ function update(i){const s=sites[i],valid=fields.every(([k])=>s[k]!=null);
+ const rows=scenarios.map(([,m])=>{if(!valid)return null;const orders=s.flow*m*s.conv/100,rev=orders*s.check*30,con=s.check*(1-s.variable/100),fixed=s.rent+s.fixed,net=rev*(1-s.variable/100)-fixed;
+ return {orders,rev,net,months:net>0?s.cap/net:null,threshold:fixed===0?0:con<=0?null:Math.ceil(fixed/(30*con))}});
+ exportsBySite[i]=rows.map((r,j)=>[s.name,scenarios[j][0],...fields.map(([k])=>s[k]),r?.orders,r?.rev,r?.net,r?.months,r?.threshold]);
+ rows.forEach((r,j)=>{
+   const cell=root.querySelector(`[data-cell="${i}-${j}"]`); cell.classList.toggle('risk',!!r&&r.net<0);
+   if(!r){cell.textContent='—';return}
+   const amount=document.createElement('strong'),months=document.createElement('span');
+   amount.textContent=fmt(r.net)+' ₸';months.textContent=r.months==null?'не окупается':fmt(r.months,1)+' мес.';
+   cell.replaceChildren(amount,months);
+ });
+ const r=rows[active];root.querySelector(`[data-spot="${i}"]`).innerHTML=r?`<p class="metric ${r.net<0?'bad':''}">${fmt(r.net)} ₸/мес</p><p>Операционный остаток · ${fmt(r.orders,2)} заказов в день · выручка ${fmt(r.rev)} ₸/мес.</p><p>Окупаемость ${r.months==null?'не достигается':fmt(r.months,1)+' мес.'}. Для безубыточности ${r.threshold==null?'нет положительного вклада с заказа':fmt(r.threshold)+' заказов в день'}.</p>`:'<p>Введите допустимые числа во все поля.</p>'}
+ root.querySelectorAll('[data-key]').forEach(el=>el.oninput=()=>{const i=+el.dataset.i;sites[i][el.dataset.key]=el.checkValidity()&&Number.isFinite(el.valueAsNumber)?el.valueAsNumber:null;update(i);root.querySelector('[data-csv]').disabled=!Array.from(root.querySelectorAll('[data-key]')).every(input=>input.validity.valid)});
+ root.querySelector('[data-csv]').onclick=()=>saveCSV('sites',[['Адрес','Сценарий',...fields.map(([,l])=>l),'Заказов в день','Выручка за месяц','Операционный остаток','Месяцев до окупаемости','Порог, заказов в день'],...exportsBySite.flat()]);
+ root.querySelector('[data-sc]').onchange=e=>{active=+e.target.value;sites.forEach((_,i)=>update(i))};sites.forEach((_,i)=>update(i))
+}
+
+const widgets = [[delivery,0],[grounds,1],[queue,2],[assistantDemo,4],[locations,5]];
+for (const [init,id] of widgets) init(document.getElementById('gc-'+id));
+const examples = [...document.querySelectorAll('[data-example]')];
+const links = [...document.querySelectorAll('nav [data-case]')];
+function goHome() {
+  if (location.protocol === 'file:') location.assign(new URL('index.html',location.href));
+  else location.assign(new URL('./',location.href));
+}
+document.querySelectorAll('[data-home]').forEach(link => {
+  if(location.protocol === 'file:') link.addEventListener('click',event => {
+    if(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault(); goHome();
+  });
+});
+function openCase(focus=false) {
+  const hash=location.hash.slice(1);
+  if(hash==='4') {goHome(); return;}
+  const id=examples.some(item=>item.dataset.example===hash) ? hash : '1';
+  examples.forEach(item => item.hidden=item.dataset.example!==id);
+  links.forEach(link => {
+    if(link.dataset.case===id) link.setAttribute('aria-current','page');
+    else link.removeAttribute('aria-current');
+  });
+  const article=document.getElementById('case-'+id);
+  document.title=article.querySelector('h1').textContent+' · Лаборатория Bekarys';
+  if(focus){ article.focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'}); }
+}
+window.addEventListener('hashchange',()=>openCase(true));
+document.getElementById('print-case').addEventListener('click',()=>window.print());
+let openNotes=[];
+window.addEventListener('beforeprint',()=>{
+  openNotes=Array.from(document.querySelectorAll('article:not([hidden]) .case-notes details:nth-child(2)')).filter(el=>!el.open);
+  openNotes.forEach(el=>el.open=true);
+});
+window.addEventListener('afterprint',()=>{openNotes.forEach(el=>el.open=false);openNotes=[]});
+openCase();
+</script></body></html>
